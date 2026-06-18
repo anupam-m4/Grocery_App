@@ -45,9 +45,6 @@ function ProductDetail() {
         <button type="button" onClick={() => navigate(-1)} className="text-2xl dark:text-white">
           ‹
         </button>
-        <button type="button" aria-label="Share" className="text-xl dark:text-white">
-          ⤴
-        </button>
       </div>
 
       <div className="flex h-64 items-center justify-center">
