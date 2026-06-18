@@ -16,6 +16,9 @@ import CategoryListing from '../screens/CategoryListing'
 import Search from '../screens/Search'
 import Account from '../screens/Account'
 import Filters from '../screens/Filters'
+import Checkout from '../screens/Checkout'
+import OrderSuccess from '../screens/OrderSuccess'
+import OrderFailed from '../screens/OrderFailed'
 
 function AppRoutes() {
   return (
@@ -37,6 +40,9 @@ function AppRoutes() {
       <Route path="/search" element={<Search />} />
       <Route path="/account" element={<Account />} />
       <Route path="/filters" element={<Filters />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/order-success" element={<OrderSuccess />} />
+      <Route path="/order-failed" element={<OrderFailed />} />
     </Routes>
   )
 }
