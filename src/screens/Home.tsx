@@ -3,6 +3,7 @@ import productsData from '../data/products.json'
 import type { Product } from '../types/product'
 import ProductCard from '../components/ProductCard'
 import BottomNav from '../components/BottomNav'
+import ThemeToggle from '../components/ThemeToggle'
 import bannerImage from '../assets/figma/banner.png'
 
 const products = productsData as Product[]
@@ -24,13 +25,17 @@ function Home() {
   return (
     <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
       <header className="px-4 pt-6">
-        <div className="mb-4 flex flex-col items-center">
-          <span className="text-2xl" aria-hidden="true">
-            🥕
-          </span>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            📍 Dhaka, Banassre
-          </p>
+        <div className="mb-4 flex items-center justify-between">
+          <span className="w-9" aria-hidden="true" />
+          <div className="flex flex-col items-center">
+            <span className="text-2xl" aria-hidden="true">
+              🥕
+            </span>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              📍 Dhaka, Banassre
+            </p>
+          </div>
+          <ThemeToggle />
         </div>
 
         <button
