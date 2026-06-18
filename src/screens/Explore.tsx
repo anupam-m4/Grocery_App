@@ -3,6 +3,7 @@ import { ProductCategory } from '../types/product'
 import { CATEGORY_LABELS } from '../data/categories'
 import { getCategoryPlaceholderEmoji } from '../utils/productImages'
 import BottomNav from '../components/BottomNav'
+import ThemeToggle from '../components/ThemeToggle'
 
 const CATEGORIES = Object.values(ProductCategory)
 
@@ -12,9 +13,13 @@ function Explore() {
   return (
     <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
       <div className="px-4 pt-6">
-        <h1 className="mb-4 text-center text-lg font-bold text-gray-900 dark:text-white">
-          Find Products
-        </h1>
+        <div className="mb-4 flex items-center justify-between">
+          <span className="w-9" aria-hidden="true" />
+          <h1 className="text-lg font-bold text-gray-900 dark:text-white">
+            Find Products
+          </h1>
+          <ThemeToggle />
+        </div>
         <button
           type="button"
           onClick={() => navigate('/search')}
