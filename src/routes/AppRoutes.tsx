@@ -15,6 +15,7 @@ import Explore from '../screens/Explore'
 import CategoryListing from '../screens/CategoryListing'
 import Search from '../screens/Search'
 import Account from '../screens/Account'
+import Filters from '../screens/Filters'
 
 function AppRoutes() {
   return (
@@ -35,6 +36,7 @@ function AppRoutes() {
       <Route path="/category/:category" element={<CategoryListing />} />
       <Route path="/search" element={<Search />} />
       <Route path="/account" element={<Account />} />
+      <Route path="/filters" element={<Filters />} />
     </Routes>
   )
 }
