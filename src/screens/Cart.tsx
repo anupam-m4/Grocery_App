@@ -18,7 +18,7 @@ function Cart() {
   if (items.length === 0) {
     return (
       <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-        <h1 className="px-4 pt-6 text-center text-lg font-bold text-gray-900 dark:text-white">
+        <h1 className="px-4 pb-2 pt-6 text-lg font-bold text-gray-900 dark:text-white">
           My Cart
         </h1>
         <div className="flex flex-1 flex-col items-center justify-center gap-2 text-gray-400">
