@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useCartStore } from '../store/cartStore'
 import { getProductImage, getCategoryPlaceholderEmoji } from '../utils/productImages'
 import BottomNav from '../components/BottomNav'
+import ThemeToggle from '../components/ThemeToggle'
 
 function Cart() {
   const items = useCartStore((state) => state.items)
@@ -18,9 +19,11 @@ function Cart() {
   if (items.length === 0) {
     return (
       <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-        <h1 className="px-4 pb-2 pt-6 text-lg font-bold text-gray-900 dark:text-white">
-          My Cart
-        </h1>
+        <div className="flex items-center justify-between px-4 pb-2 pt-6">
+          <span className="w-9" aria-hidden="true" />
+          <h1 className="text-lg font-bold text-gray-900 dark:text-white">My Cart</h1>
+          <ThemeToggle />
+        </div>
         <div className="flex flex-1 flex-col items-center justify-center gap-2 text-gray-400">
           <span className="text-5xl" role="img" aria-label="Empty cart">
             🛒
@@ -41,9 +44,11 @@ function Cart() {
 
   return (
     <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-      <h1 className="px-4 pt-6 text-center text-lg font-bold text-gray-900 dark:text-white">
-        My Cart
-      </h1>
+      <div className="flex items-center justify-between px-4 pb-2 pt-6">
+        <span className="w-9" aria-hidden="true" />
+        <h1 className="text-lg font-bold text-gray-900 dark:text-white">My Cart</h1>
+        <ThemeToggle />
+      </div>
 
       <div className="flex-1 overflow-y-auto px-4">
         {items.map((item) => {
