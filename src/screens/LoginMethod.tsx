@@ -1,6 +1,10 @@
+import { useNavigate } from 'react-router-dom'
+
 function LoginMethod() {
+  const navigate = useNavigate()
+
   return (
-    <div className="flex h-screen flex-col justify-end bg-gradient-to-b from-rose-50 to-white px-6 pb-10">
+    <div className="flex h-screen flex-col justify-end bg-linear-to-b from-rose-50 to-white px-6 pb-10">
       <h1 className="mb-6 text-2xl font-bold text-gray-900">
         Get your groceries
         <br />
@@ -9,6 +13,7 @@ function LoginMethod() {
 
       <button
         type="button"
+        onClick={() => navigate('/phone')}
         className="mb-6 flex items-center gap-3 border-b border-gray-200 pb-3 text-left text-gray-900"
       >
         <span aria-hidden="true">🌐</span>
