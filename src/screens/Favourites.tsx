@@ -12,7 +12,7 @@ function Favourites() {
   if (favourites.length === 0) {
     return (
       <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-        <h1 className="px-4 pt-6 text-center text-lg font-bold text-gray-900 dark:text-white">
+        <h1 className="px-4 pb-2 pt-6 text-lg font-bold text-gray-900 dark:text-white">
           Favourite
         </h1>
         <div className="flex flex-1 flex-col items-center justify-center gap-2 text-gray-400">
@@ -64,8 +64,9 @@ function Favourites() {
                 </p>
                 <p className="text-xs text-gray-400">{product.unit}</p>
               </div>
-              <span className="font-semibold text-gray-900 dark:text-white">
+              <span className="flex items-center gap-2 font-semibold text-gray-900 dark:text-white">
                 ${product.price.toFixed(2)}
+                <span className="text-gray-300">›</span>
               </span>
             </button>
           )
