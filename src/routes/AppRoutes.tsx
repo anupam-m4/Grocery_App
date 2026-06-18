@@ -7,6 +7,7 @@ import Otp from '../screens/Otp'
 import EmailLogin from '../screens/EmailLogin'
 import SignUp from '../screens/SignUp'
 import Location from '../screens/Location'
+import Home from '../screens/Home'
 
 function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ function AppRoutes() {
       <Route path="/email-login" element={<EmailLogin />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/location" element={<Location />} />
+      <Route path="/home" element={<Home />} />
     </Routes>
   )
 }
