@@ -5,6 +5,7 @@ import type { Product } from '../types/product'
 import ProductCard from '../components/ProductCard'
 import BottomNav from '../components/BottomNav'
 import { debounce } from '../utils/debounce'
+import { useFilterStore } from '../store/filterStore'
 
 const products = productsData as Product[]
 
@@ -12,6 +13,8 @@ function Search() {
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
   const [debouncedQuery, setDebouncedQuery] = useState('')
+  const categories = useFilterStore((state) => state.categories)
+  const brands = useFilterStore((state) => state.brands)
 
   const debouncedSetQuery = useMemo(() => debounce(setDebouncedQuery, 300), [])
 
@@ -21,9 +24,15 @@ function Search() {
   }
 
   const results = debouncedQuery
-    ? products.filter((product) =>
-        product.name.toLowerCase().includes(debouncedQuery.toLowerCase()),
-      )
+    ? products.filter((product) => {
+        const matchesQuery = product.name
+          .toLowerCase()
+          .includes(debouncedQuery.toLowerCase())
+        const matchesCategory =
+          categories.length === 0 || categories.includes(product.category)
+        const matchesBrand = brands.length === 0 || brands.includes(product.brand)
+        return matchesQuery && matchesCategory && matchesBrand
+      })
     : []
 
   return (
@@ -40,6 +49,14 @@ function Search() {
           placeholder="Search Store"
           className="flex-1 rounded-lg bg-gray-100 px-4 py-3 text-sm outline-none dark:bg-gray-800 dark:text-white"
         />
+        <button
+          type="button"
+          onClick={() => navigate('/filters')}
+          aria-label="Open filters"
+          className="text-xl dark:text-white"
+        >
+          ⚙
+        </button>
       </div>
 
       <div className="flex-1 overflow-y-auto px-4 pb-4 pt-4">
