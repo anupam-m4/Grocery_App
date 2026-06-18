@@ -1,4 +1,14 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 function Splash() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const timer = setTimeout(() => navigate('/onboarding'), 1500)
+    return () => clearTimeout(timer)
+  }, [navigate])
+
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-emerald-500">
       <div className="flex items-center gap-2 text-white">
