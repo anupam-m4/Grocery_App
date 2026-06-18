@@ -3,6 +3,7 @@ import { useFavouriteStore } from '../store/favouriteStore'
 import { useCartStore } from '../store/cartStore'
 import { getProductImage, getCategoryPlaceholderEmoji } from '../utils/productImages'
 import BottomNav from '../components/BottomNav'
+import ThemeToggle from '../components/ThemeToggle'
 
 function Favourites() {
   const favourites = useFavouriteStore((state) => state.items)
@@ -12,9 +13,11 @@ function Favourites() {
   if (favourites.length === 0) {
     return (
       <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-        <h1 className="px-4 pb-2 pt-6 text-lg font-bold text-gray-900 dark:text-white">
-          Favourite
-        </h1>
+        <div className="flex items-center justify-between px-4 pb-2 pt-6">
+          <span className="w-9" aria-hidden="true" />
+          <h1 className="text-lg font-bold text-gray-900 dark:text-white">Favourite</h1>
+          <ThemeToggle />
+        </div>
         <div className="flex flex-1 flex-col items-center justify-center gap-2 text-gray-400">
           <span className="text-5xl" role="img" aria-label="No favourites">
             ♡
@@ -35,9 +38,11 @@ function Favourites() {
 
   return (
     <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-      <h1 className="px-4 pt-6 text-center text-lg font-bold text-gray-900 dark:text-white">
-        Favourite
-      </h1>
+      <div className="flex items-center justify-between px-4 pb-2 pt-6">
+        <span className="w-9" aria-hidden="true" />
+        <h1 className="text-lg font-bold text-gray-900 dark:text-white">Favourite</h1>
+        <ThemeToggle />
+      </div>
 
       <div className="flex-1 overflow-y-auto px-4">
         {favourites.map((product) => {
