@@ -1,0 +1,74 @@
+[
+  {
+    "id": "organic-bananas",
+    "name": "Organic Bananas",
+    "description": "Bananas are a great source of potassium and fiber, perfect for a quick energy boost.",
+    "category": "fresh-fruits-vegetable",
+    "brand": "Individual Collection",
+    "unit": "7pcs, Priceg",
+    "price": 4.99,
+    "imageUrl": "",
+    "rating": 4,
+    "isFavourite": false
+  },
+  {
+    "id": "red-apple",
+    "name": "Naturel Red Apple",
+    "description": "Apples are nutritious. Apples may be good for weight loss. Apples may be good for your heart, as part of a healthful and varied diet.",
+    "category": "fresh-fruits-vegetable",
+    "brand": "Individual Collection",
+    "unit": "1kg, Price",
+    "price": 4.99,
+    "imageUrl": "",
+    "rating": 4,
+    "isFavourite": false
+  },
+  {
+    "id": "bell-pepper-red",
+    "name": "Bell Pepper Red",
+    "description": "Crisp and sweet red bell peppers, great raw in salads or roasted as a side dish.",
+    "category": "fresh-fruits-vegetable",
+    "brand": "Individual Collection",
+    "unit": "1kg, Priceg",
+    "price": 4.99,
+    "imageUrl": "",
+    "rating": 4,
+    "isFavourite": false
+  },
+  {
+    "id": "ginger",
+    "name": "Ginger",
+    "description": "Fresh ginger root, adds warmth and spice to both sweet and savory dishes.",
+    "category": "fresh-fruits-vegetable",
+    "brand": "Individual Collection",
+    "unit": "250gm, Priceg",
+    "price": 2.99,
+    "imageUrl": "",
+    "rating": 4,
+    "isFavourite": false
+  },
+  {
+    "id": "beef-bone",
+    "name": "Beef Bone",
+    "description": "Quality beef bone, ideal for rich, slow-simmered broths and stews.",
+    "category": "meat-fish",
+    "brand": "Kazi Farmas",
+    "unit": "1kg, Priceg",
+    "price": 4.99,
+    "imageUrl": "",
+    "rating": 4,
+    "isFavourite": false
+  },
+  {
+    "id": "broiler-chicken",
+    "name": "Broiler Chicken",
+    "description": "Whole broiler chicken, fresh and ready for your favourite recipes.",
+    "category": "meat-fish",
+    "brand": "Kazi Farmas",
+    "unit": "1kg, Priceg",
+    "price": 4.99,
+    "imageUrl": "",
+    "rating": 4,
+    "isFavourite": false
+  }
+]
