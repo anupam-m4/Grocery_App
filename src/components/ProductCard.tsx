@@ -13,7 +13,7 @@ function ProductCard({ product }: ProductCardProps) {
   const image = getProductImage(product.id)
 
   return (
-    <div className="w-40 shrink-0 rounded-xl border border-gray-100 bg-white p-3 dark:border-gray-700 dark:bg-gray-800">
+    <div className="w-full rounded-xl border border-gray-100 bg-white p-3 dark:border-gray-700 dark:bg-gray-800">
       <button
         type="button"
         onClick={() => navigate(`/product/${product.id}`)}
