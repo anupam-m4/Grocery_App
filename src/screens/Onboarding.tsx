@@ -8,7 +8,7 @@ function Onboarding() {
     <div className="flex h-screen flex-col bg-gray-900">
       <img
         src={deliveryManPhoto}
-        alt="Delivery person holding a bag of fresh groceries"
+        alt="Delivery person"
         className="flex-1 object-cover"
       />
       <div className="flex flex-col gap-4 px-6 pb-10 pt-8 text-center text-white">
