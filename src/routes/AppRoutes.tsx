@@ -9,6 +9,12 @@ import SignUp from '../screens/SignUp'
 import Location from '../screens/Location'
 import Home from '../screens/Home'
 import ProductDetail from '../screens/ProductDetail'
+import Cart from '../screens/Cart'
+import Favourites from '../screens/Favourites'
+import Explore from '../screens/Explore'
+import CategoryListing from '../screens/CategoryListing'
+import Search from '../screens/Search'
+import Account from '../screens/Account'
 
 function AppRoutes() {
   return (
@@ -23,6 +29,12 @@ function AppRoutes() {
       <Route path="/location" element={<Location />} />
       <Route path="/home" element={<Home />} />
       <Route path="/product/:id" element={<ProductDetail />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/favourites" element={<Favourites />} />
+      <Route path="/explore" element={<Explore />} />
+      <Route path="/category/:category" element={<CategoryListing />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/account" element={<Account />} />
     </Routes>
   )
 }
