@@ -8,6 +8,7 @@ import EmailLogin from '../screens/EmailLogin'
 import SignUp from '../screens/SignUp'
 import Location from '../screens/Location'
 import Home from '../screens/Home'
+import ProductDetail from '../screens/ProductDetail'
 
 function AppRoutes() {
   return (
@@ -21,6 +22,7 @@ function AppRoutes() {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/location" element={<Location />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/product/:id" element={<ProductDetail />} />
     </Routes>
   )
 }
