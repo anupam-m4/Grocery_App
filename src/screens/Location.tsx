@@ -6,7 +6,11 @@ function Location() {
 
   return (
     <div className="flex h-screen flex-col bg-linear-to-b from-rose-50 to-white px-6 pt-12 dark:from-gray-900 dark:to-gray-900">
-      <button type="button" onClick={() => navigate(-1)} className="mb-8 text-2xl dark:text-white">
+      <button
+        type="button"
+        onClick={() => navigate(-1)}
+        className="mb-8 self-start text-2xl dark:text-white"
+      >
         ‹
       </button>
 

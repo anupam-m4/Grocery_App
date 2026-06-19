@@ -17,7 +17,11 @@ function Otp() {
   const display = code.padEnd(CODE_LENGTH, '-').split('').join(' ')
 
   async function handleVerify() {
-    if (code.length !== CODE_LENGTH || !confirmationResult) return
+    if (code.length !== CODE_LENGTH) {
+      setError(`Please enter the ${CODE_LENGTH}-digit code.`)
+      return
+    }
+    if (!confirmationResult) return
     setError('')
     setIsVerifying(true)
 
@@ -34,7 +38,11 @@ function Otp() {
 
   return (
     <div className="flex h-screen flex-col bg-linear-to-b from-rose-50 to-white px-6 pb-6 pt-12 dark:from-gray-900 dark:to-gray-900">
-      <button type="button" onClick={() => navigate(-1)} className="mb-8 text-2xl dark:text-white">
+      <button
+        type="button"
+        onClick={() => navigate(-1)}
+        className="mb-8 self-start text-2xl dark:text-white"
+      >
         ‹
       </button>
 

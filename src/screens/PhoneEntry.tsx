@@ -8,6 +8,12 @@ import { useAuthStore } from '../store/authStore'
 import { COUNTRIES } from '../data/countries'
 import CountryCodeSelect from '../components/CountryCodeSelect'
 
+function sanitizeNumber(value: string, dialCode: string): string {
+  const digitsOnly = value.replace(/\D/g, '')
+  const dialDigits = dialCode.replace(/\D/g, '')
+  return digitsOnly.startsWith(dialDigits) ? digitsOnly.slice(dialDigits.length) : digitsOnly
+}
+
 function PhoneEntry() {
   const [number, setNumber] = useState('')
   const [dialCode, setDialCode] = useState(COUNTRIES[0].dialCode)
@@ -58,7 +64,7 @@ function PhoneEntry() {
           id="mobile"
           type="tel"
           value={number}
-          onChange={(e) => setNumber(e.target.value)}
+          onChange={(e) => setNumber(sanitizeNumber(e.target.value, dialCode))}
           className="flex-1 bg-transparent outline-none"
         />
       </div>
