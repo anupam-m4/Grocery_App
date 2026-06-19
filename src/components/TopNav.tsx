@@ -4,6 +4,7 @@ import productsData from '../data/products.json'
 import type { Product } from '../types/product'
 import { debounce } from '../utils/debounce'
 import { getProductImage, getCategoryPlaceholderEmoji } from '../utils/productImages'
+import { useCartStore } from '../store/cartStore'
 import ThemeToggle from './ThemeToggle'
 
 const products = productsData as Product[]
@@ -18,6 +19,7 @@ const NAV_ITEMS = [
 
 function TopNav() {
   const navigate = useNavigate()
+  const cartCount = useCartStore((state) => state.items.length)
   const [query, setQuery] = useState('')
   const [debouncedQuery, setDebouncedQuery] = useState('')
   const [isOpen, setIsOpen] = useState(false)
@@ -130,10 +132,15 @@ function TopNav() {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                isActive ? 'text-emerald-600' : 'text-gray-500 dark:text-gray-400'
+                `relative ${isActive ? 'text-emerald-600' : 'text-gray-500 dark:text-gray-400'}`
               }
             >
               {item.label}
+              {item.to === '/cart' && cartCount > 0 && (
+                <span className="absolute -right-3 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-500 px-1 text-[10px] font-semibold text-white">
+                  {cartCount}
+                </span>
+              )}
             </NavLink>
           ))}
         </nav>

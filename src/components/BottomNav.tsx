@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { useCartStore } from '../store/cartStore'
 
 const NAV_ITEMS = [
   { to: '/home', label: 'Shop', icon: '🏠' },
@@ -9,6 +10,8 @@ const NAV_ITEMS = [
 ]
 
 function BottomNav() {
+  const cartCount = useCartStore((state) => state.items.length)
+
   return (
     <nav className="grid grid-cols-5 border-t border-gray-100 bg-white py-2 dark:border-gray-700 dark:bg-gray-900 lg:hidden">
       {NAV_ITEMS.map((item) => (
@@ -23,7 +26,14 @@ function BottomNav() {
             }`
           }
         >
-          <span aria-hidden="true">{item.icon}</span>
+          <span className="relative" aria-hidden="true">
+            {item.icon}
+            {item.to === '/cart' && cartCount > 0 && (
+              <span className="absolute -right-2 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-500 px-1 text-[10px] font-semibold text-white">
+                {cartCount}
+              </span>
+            )}
+          </span>
           {item.label}
         </NavLink>
       ))}
