@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import BottomNav from '../components/BottomNav'
+import ThemeToggle from '../components/ThemeToggle'
 
 const MENU_ITEMS = ['Orders', 'Shipping Addresses', 'Payment Methods', 'Settings']
 
@@ -8,9 +9,11 @@ function Account() {
 
   return (
     <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-      <h1 className="px-4 pt-6 text-center text-lg font-bold text-gray-900 dark:text-white">
-        Account
-      </h1>
+      <div className="flex items-center justify-between px-4 pt-6">
+        <span className="w-9" aria-hidden="true" />
+        <h1 className="text-lg font-bold text-gray-900 dark:text-white">Account</h1>
+        <ThemeToggle />
+      </div>
 
       <div className="flex flex-col items-center gap-2 px-4 py-6">
         <span

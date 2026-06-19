@@ -4,7 +4,7 @@ import productsData from '../data/products.json'
 import type { Product } from '../types/product'
 import { getProductImage, getCategoryPlaceholderEmoji } from '../utils/productImages'
 import { useCartStore } from '../store/cartStore'
-import { useFavouriteStore } from '../store/favouriteStore'
+import FavouriteButton from '../components/FavouriteButton'
 
 const products = productsData as Product[]
 
@@ -15,10 +15,6 @@ function ProductDetail() {
   const [quantity, setQuantity] = useState(1)
   const [isDetailOpen, setIsDetailOpen] = useState(true)
   const addItem = useCartStore((state) => state.addItem)
-  const toggleFavourite = useFavouriteStore((state) => state.toggleFavourite)
-  const isFavourite = useFavouriteStore((state) =>
-    product ? state.isFavourite(product.id) : false,
-  )
 
   if (!product) {
     return (
@@ -80,16 +76,7 @@ function ProductDetail() {
             </h1>
             <p className="text-sm text-gray-400">{product.unit}</p>
           </div>
-          <button
-            type="button"
-            onClick={() => toggleFavourite(product)}
-            aria-label={
-              isFavourite ? 'Remove from favourites' : 'Add to favourites'
-            }
-            className="text-2xl"
-          >
-            {isFavourite ? '♥' : '♡'}
-          </button>
+          <FavouriteButton product={product} size={28} />
         </div>
 
         <div className="mb-6 flex items-center gap-4">

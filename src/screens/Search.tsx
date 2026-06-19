@@ -6,6 +6,7 @@ import ProductCard from '../components/ProductCard'
 import BottomNav from '../components/BottomNav'
 import { debounce } from '../utils/debounce'
 import { useFilterStore } from '../store/filterStore'
+import filterIcon from '../assets/figma/Group 6839.png'
 
 const products = productsData as Product[]
 
@@ -53,9 +54,8 @@ function Search() {
           type="button"
           onClick={() => navigate('/filters')}
           aria-label="Open filters"
-          className="text-xl dark:text-white"
         >
-          ⚙
+          <img src={filterIcon} alt="" className="h-4 w-4 dark:invert" />
         </button>
       </div>
 
