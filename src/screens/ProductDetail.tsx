@@ -37,8 +37,8 @@ function ProductDetail() {
   }
 
   return (
-    <div className="relative flex h-screen flex-col bg-gray-50 dark:bg-gray-900 lg:grid lg:grid-cols-2 lg:gap-12 lg:px-16 lg:py-10">
-      <div className="relative flex h-72 flex-col rounded-b-3xl bg-gray-100 dark:bg-gray-800 lg:h-full lg:rounded-3xl">
+    <div className="relative flex h-screen flex-col bg-gray-50 dark:bg-gray-900 lg:grid lg:grid-cols-[45%_55%] lg:gap-12 lg:px-16 lg:py-10">
+      <div className="relative flex h-72 flex-col rounded-b-3xl bg-gray-100 dark:bg-gray-800 lg:sticky lg:top-10 lg:h-[80vh] lg:self-start lg:rounded-3xl">
         <button
           type="button"
           onClick={() => navigate(-1)}
@@ -150,7 +150,7 @@ function ProductDetail() {
         <button
           type="button"
           onClick={handleAddToBasket}
-          className="mt-6 hidden w-full rounded-full bg-emerald-500 py-4 font-semibold text-white lg:block"
+          className="mt-6 hidden w-full rounded-full bg-emerald-500 py-4 font-semibold text-white lg:block lg:w-80"
         >
           Add To Basket
         </button>

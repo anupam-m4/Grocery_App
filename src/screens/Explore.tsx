@@ -23,7 +23,7 @@ function Explore() {
         <button
           type="button"
           onClick={() => navigate('/search')}
-          className="mb-4 w-full rounded-lg bg-gray-100 px-4 py-3 text-left text-sm text-gray-400 dark:bg-gray-800 lg:max-w-xl"
+          className="mb-4 w-full rounded-lg bg-gray-100 px-4 py-3 text-left text-sm text-gray-400 dark:bg-gray-800 lg:hidden"
         >
           Search Store
         </button>
