@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useCartStore } from '../store/cartStore'
 import { getProductImage, getCategoryPlaceholderEmoji } from '../utils/productImages'
-import BottomNav from '../components/BottomNav'
+import MainLayout from '../components/MainLayout'
 import ThemeToggle from '../components/ThemeToggle'
 
 function Cart() {
@@ -18,8 +18,8 @@ function Cart() {
 
   if (items.length === 0) {
     return (
-      <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-        <div className="flex items-center justify-between px-4 pb-2 pt-6">
+      <MainLayout>
+        <div className="flex items-center justify-between px-4 pb-2 pt-6 lg:mx-auto lg:w-full lg:max-w-3xl">
           <span className="w-9" aria-hidden="true" />
           <h1 className="text-lg font-bold text-gray-900 dark:text-white">My Cart</h1>
           <ThemeToggle />
@@ -37,20 +37,19 @@ function Cart() {
             Start shopping
           </button>
         </div>
-        <BottomNav />
-      </div>
+      </MainLayout>
     )
   }
 
   return (
-    <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-      <div className="flex items-center justify-between px-4 pb-2 pt-6">
+    <MainLayout>
+      <div className="flex items-center justify-between px-4 pb-2 pt-6 lg:mx-auto lg:w-full lg:max-w-3xl">
         <span className="w-9" aria-hidden="true" />
         <h1 className="text-lg font-bold text-gray-900 dark:text-white">My Cart</h1>
         <ThemeToggle />
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4">
+      <div className="flex-1 overflow-y-auto px-4 lg:mx-auto lg:w-full lg:max-w-3xl">
         {items.map((item) => {
           const image = getProductImage(item.product.id)
           return (
@@ -110,7 +109,7 @@ function Cart() {
         })}
       </div>
 
-      <div className="p-4">
+      <div className="p-4 lg:mx-auto lg:w-full lg:max-w-3xl">
         <button
           type="button"
           onClick={() => navigate('/checkout')}
@@ -120,9 +119,7 @@ function Cart() {
           <span>${total.toFixed(2)}</span>
         </button>
       </div>
-
-      <BottomNav />
-    </div>
+    </MainLayout>
   )
 }
 

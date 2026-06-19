@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { ProductCategory } from '../types/product'
 import { CATEGORY_LABELS } from '../data/categories'
 import { getCategoryPlaceholderEmoji } from '../utils/productImages'
-import BottomNav from '../components/BottomNav'
+import MainLayout from '../components/MainLayout'
 import ThemeToggle from '../components/ThemeToggle'
 
 const CATEGORIES = Object.values(ProductCategory)
@@ -11,8 +11,8 @@ function Explore() {
   const navigate = useNavigate()
 
   return (
-    <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-      <div className="px-4 pt-6">
+    <MainLayout>
+      <div className="px-4 pt-6 lg:mx-auto lg:w-full lg:max-w-5xl">
         <div className="mb-4 flex items-center justify-between">
           <span className="w-9" aria-hidden="true" />
           <h1 className="text-lg font-bold text-gray-900 dark:text-white">
@@ -29,8 +29,8 @@ function Explore() {
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4 pb-4">
-        <div className="grid grid-cols-2 gap-3">
+      <div className="flex-1 overflow-y-auto px-4 pb-4 lg:mx-auto lg:w-full lg:max-w-5xl">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {CATEGORIES.map((category) => (
             <button
               type="button"
@@ -48,9 +48,7 @@ function Explore() {
           ))}
         </div>
       </div>
-
-      <BottomNav />
-    </div>
+    </MainLayout>
   )
 }
 

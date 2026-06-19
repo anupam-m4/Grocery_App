@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import productsData from '../data/products.json'
 import type { Product } from '../types/product'
 import ProductCard from '../components/ProductCard'
-import BottomNav from '../components/BottomNav'
+import MainLayout from '../components/MainLayout'
 import ThemeToggle from '../components/ThemeToggle'
 import bannerImage from '../assets/figma/banner.png'
 
@@ -23,8 +23,8 @@ function Home() {
   ]
 
   return (
-    <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-      <header className="px-4 pt-6">
+    <MainLayout>
+      <header className="px-4 pt-6 lg:mx-auto lg:w-full lg:max-w-5xl">
         <div className="mb-4 flex items-center justify-between">
           <span className="w-9" aria-hidden="true" />
           <div className="flex flex-col items-center">
@@ -47,7 +47,7 @@ function Home() {
         </button>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 pb-4">
+      <main className="flex-1 overflow-y-auto px-4 pb-4 lg:mx-auto lg:w-full lg:max-w-5xl">
         <img
           src={bannerImage}
           alt="Fresh Vegetables - up to 40% off"
@@ -68,9 +68,9 @@ function Home() {
                 See all
               </button>
             </div>
-            <div className="flex gap-3 overflow-x-auto pb-2">
+            <div className="flex gap-3 overflow-x-auto pb-2 lg:flex-wrap lg:overflow-visible">
               {section.items.map((product) => (
-                <div key={product.id} className="w-40 shrink-0">
+                <div key={product.id} className="w-40 shrink-0 lg:w-52">
                   <ProductCard product={product} />
                 </div>
               ))}
@@ -78,9 +78,7 @@ function Home() {
           </section>
         ))}
       </main>
-
-      <BottomNav />
-    </div>
+    </MainLayout>
   )
 }
 
