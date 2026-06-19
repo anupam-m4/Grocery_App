@@ -20,6 +20,7 @@ function Home() {
     { title: 'Exclusive Offer', items: products.slice(0, 4) },
     { title: 'Best Selling', items: products.slice(1, 5) },
     { title: 'Groceries', items: products.slice(2, 6) },
+    { title: 'New Arrivals', items: products.slice(6) },
   ]
 
   return (

@@ -70,5 +70,65 @@
     "imageUrl": "",
     "rating": 4,
     "isFavourite": false
+  },
+  {
+    "id": "bell-apper",
+    "name": "Bell Pepper",
+    "description": "Fresh bell pepper with crisp texture for salads and cooking.",
+    "category": "fresh-fruits-vegetable",
+    "brand": "Individual Collection",
+    "unit": "1kg, Priceg",
+    "price": 5.49,
+    "imageUrl": "",
+    "rating": 4,
+    "isFavourite": false
+  },
+  {
+    "id": "orange-juice",
+    "name": "Orange Juice",
+    "description": "Freshly squeezed orange juice, rich in vitamin C and refreshing.",
+    "category": "beverages",
+    "brand": "Healthy Harvest",
+    "unit": "1L, Price",
+    "price": 3.99,
+    "imageUrl": "",
+    "rating": 4,
+    "isFavourite": false
+  },
+  {
+    "id": "milk-carton",
+    "name": "Milk Carton",
+    "description": "Creamy milk carton for everyday breakfast and cooking needs.",
+    "category": "dairy-eggs",
+    "brand": "PureDairy",
+    "unit": "1L, Price",
+    "price": 2.79,
+    "imageUrl": "",
+    "rating": 4,
+    "isFavourite": false
+  },
+  {
+    "id": "bread-loaf",
+    "name": "Bread Loaf",
+    "description": "Soft, freshly baked bread loaf perfect for sandwiches and toast.",
+    "category": "bakery-snacks",
+    "brand": "Daily Bake",
+    "unit": "1pc, Price",
+    "price": 2.49,
+    "imageUrl": "",
+    "rating": 4,
+    "isFavourite": false
+  },
+  {
+    "id": "cooking-oil",
+    "name": "Cooking Oil",
+    "description": "High-quality cooking oil for everyday frying and seasoning.",
+    "category": "cooking-oil-ghee",
+    "brand": "Kitchen Gold",
+    "unit": "1L, Price",
+    "price": 6.99,
+    "imageUrl": "",
+    "rating": 4,
+    "isFavourite": false
   }
 ]
