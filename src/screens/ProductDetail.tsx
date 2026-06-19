@@ -37,12 +37,21 @@ function ProductDetail() {
   }
 
   return (
-    <div className="relative flex h-screen flex-col bg-gray-50 dark:bg-gray-900 lg:grid lg:grid-cols-[45%_55%] lg:gap-12 lg:px-16 lg:py-10">
+    <div className="relative flex h-screen flex-col bg-gray-50 dark:bg-gray-900 lg:h-auto lg:min-h-screen lg:px-16 lg:py-10">
+      <button
+        type="button"
+        onClick={() => navigate(-1)}
+        className="hidden text-2xl text-gray-900 dark:text-white lg:mb-6 lg:block"
+      >
+        ‹
+      </button>
+
+      <div className="lg:grid lg:grid-cols-[45%_55%] lg:gap-12">
       <div className="relative flex h-72 flex-col rounded-b-3xl bg-gray-100 dark:bg-gray-800 lg:sticky lg:top-10 lg:h-[80vh] lg:self-start lg:rounded-3xl">
         <button
           type="button"
           onClick={() => navigate(-1)}
-          className="absolute left-4 top-6 text-2xl dark:text-white lg:left-6 lg:top-6"
+          className="absolute left-4 top-6 text-2xl dark:text-white lg:hidden"
         >
           ‹
         </button>
@@ -154,6 +163,7 @@ function ProductDetail() {
         >
           Add To Basket
         </button>
+      </div>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 bg-white p-4 dark:bg-gray-900 lg:hidden">
