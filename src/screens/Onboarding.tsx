@@ -9,10 +9,10 @@ function Onboarding() {
       <img
         src={deliveryManPhoto}
         alt="Delivery person"
-        className="block w-full flex-1 object-cover lg:h-screen lg:flex-none"
+        className="hidden w-full flex-1 object-cover lg:block lg:h-screen lg:flex-none"
       />
-      <div className="flex flex-col gap-4 px-6 pb-10 pt-8 text-center text-white lg:h-screen lg:items-start lg:justify-center lg:px-16 lg:text-left">
-        <span className="hidden text-3xl lg:block" aria-hidden="true">
+      <div className="flex flex-col justify-center gap-4 px-6 py-8 text-center text-white lg:h-screen lg:items-start lg:justify-center lg:px-16 lg:text-left">
+        <span className="text-3xl lg:block" aria-hidden="true">
           🥕
         </span>
         <h1 className="text-3xl font-bold lg:text-5xl">
@@ -33,7 +33,7 @@ function Onboarding() {
         <button
           type="button"
           onClick={() => navigate('/login')}
-          className="hidden text-sm text-gray-300 underline lg:block"
+          className="text-sm text-gray-300 underline lg:block"
         >
           Already have an account? Log in
         </button>
