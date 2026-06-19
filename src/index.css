@@ -2,8 +2,10 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+html,
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 button:not(:disabled) {

@@ -5,6 +5,7 @@ import type { Product } from '../types/product'
 import { getProductImage, getCategoryPlaceholderEmoji } from '../utils/productImages'
 import { useCartStore } from '../store/cartStore'
 import FavouriteButton from '../components/FavouriteButton'
+import TopNav from '../components/TopNav'
 
 const products = productsData as Product[]
 
@@ -15,6 +16,9 @@ function ProductDetail() {
   const [quantity, setQuantity] = useState(1)
   const [isDetailOpen, setIsDetailOpen] = useState(true)
   const addItem = useCartStore((state) => state.addItem)
+  const isInCart = useCartStore((state) =>
+    product ? state.items.some((item) => item.product.id === product.id) : false,
+  )
 
   if (!product) {
     return (
@@ -30,14 +34,19 @@ function ProductDetail() {
   const image = getProductImage(product.id)
 
   function handleAddToBasket() {
+    if (isInCart) {
+      navigate('/cart')
+      return
+    }
     for (let i = 0; i < quantity; i += 1) {
       addItem(product!)
     }
-    navigate('/cart')
   }
 
   return (
-    <div className="relative flex h-screen flex-col bg-gray-50 dark:bg-gray-900 lg:h-auto lg:min-h-screen lg:px-16 lg:py-10">
+    <div className="flex h-screen flex-col bg-gray-50 dark:bg-gray-900">
+      <TopNav />
+      <div className="relative flex-1 lg:px-16 lg:py-10">
       <button
         type="button"
         onClick={() => navigate(-1)}
@@ -161,7 +170,7 @@ function ProductDetail() {
           onClick={handleAddToBasket}
           className="mt-6 hidden w-full rounded-full bg-emerald-500 py-4 font-semibold text-white lg:block lg:w-80"
         >
-          Add To Basket
+          {isInCart ? 'Go to Cart' : 'Add To Basket'}
         </button>
       </div>
       </div>
@@ -172,8 +181,9 @@ function ProductDetail() {
           onClick={handleAddToBasket}
           className="w-full rounded-full bg-emerald-500 py-4 font-semibold text-white"
         >
-          Add To Basket
+          {isInCart ? 'Go to Cart' : 'Add To Basket'}
         </button>
+      </div>
       </div>
     </div>
   )

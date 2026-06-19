@@ -23,7 +23,7 @@ function Home() {
   ]
 
   return (
-    <MainLayout>
+    <MainLayout showBackButton={false}>
       <header className="border-b border-gray-100 px-4 py-4 dark:border-gray-800 lg:hidden">
         <div className="mb-4 flex items-center justify-between">
           <span className="w-9" aria-hidden="true" />
