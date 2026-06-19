@@ -86,9 +86,11 @@ function PhoneEntry() {
           </button>
         </div>
 
-        <NumericKeypad
-          onKeyPress={(key) => setNumber((prev) => applyKeypadInput(prev, key))}
-        />
+        <div className="lg:hidden">
+          <NumericKeypad
+            onKeyPress={(key) => setNumber((prev) => applyKeypadInput(prev, key))}
+          />
+        </div>
       </div>
     </AuthShell>
   )

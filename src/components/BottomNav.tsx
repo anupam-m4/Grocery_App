@@ -10,7 +10,7 @@ const NAV_ITEMS = [
 
 function BottomNav() {
   return (
-    <nav className="grid grid-cols-5 border-t border-gray-100 bg-white py-2 dark:border-gray-700 dark:bg-gray-900 lg:flex lg:w-24 lg:shrink-0 lg:grid-cols-none lg:flex-col lg:justify-start lg:gap-8 lg:border-r lg:border-t-0 lg:py-10">
+    <nav className="grid grid-cols-5 border-t border-gray-100 bg-white py-2 dark:border-gray-700 dark:bg-gray-900 lg:hidden">
       {NAV_ITEMS.map((item) => (
         <NavLink
           key={item.to}

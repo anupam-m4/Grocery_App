@@ -55,9 +55,17 @@ function Otp() {
         <label className="mb-1 text-sm text-gray-500" htmlFor="code">
           Code
         </label>
-        <p id="code" className="border-b border-gray-300 pb-2 tracking-widest dark:text-white">
+        <p id="code" className="border-b border-gray-300 pb-2 tracking-widest dark:text-white lg:hidden">
           {display}
         </p>
+        <input
+          type="text"
+          inputMode="numeric"
+          value={code}
+          onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, CODE_LENGTH))}
+          maxLength={CODE_LENGTH}
+          className="hidden w-full border-b border-gray-300 bg-transparent pb-2 tracking-widest outline-none dark:text-white lg:block"
+        />
         {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
         <div className="mb-auto" />
 
@@ -75,9 +83,11 @@ function Otp() {
           </button>
         </div>
 
-        <NumericKeypad
-          onKeyPress={(key) => setCode((prev) => applyKeypadInput(prev, key, CODE_LENGTH))}
-        />
+        <div className="lg:hidden">
+          <NumericKeypad
+            onKeyPress={(key) => setCode((prev) => applyKeypadInput(prev, key, CODE_LENGTH))}
+          />
+        </div>
       </div>
     </AuthShell>
   )
