@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { Sun } from 'lucide-react'
 import productsData from '../data/products.json'
 import type { Product } from '../types/product'
 import { debounce } from '../utils/debounce'
@@ -122,8 +121,6 @@ function TopNav() {
           <span aria-hidden="true">📍</span>
           Dhaka, Banassre
         </div>
-
-        <Sun size={18} className="shrink-0 text-gray-400" aria-hidden="true" />
 
         <ThemeToggle />
 

@@ -39,7 +39,7 @@ function Search() {
   return (
     <MainLayout>
       <div className="flex items-center gap-3 px-4 pt-6 lg:mx-auto lg:w-full lg:max-w-5xl">
-        <button type="button" onClick={() => navigate(-1)} className="text-2xl dark:text-white">
+        <button type="button" onClick={() => navigate(-1)} className="text-2xl dark:text-white lg:hidden">
           ‹
         </button>
         <input

@@ -41,7 +41,7 @@ function ProductDetail() {
       <button
         type="button"
         onClick={() => navigate(-1)}
-        className="hidden text-2xl text-gray-900 dark:text-white lg:mb-6 lg:block"
+        className="hidden text-2xl text-gray-900 dark:text-white lg:mb-6 lg:block lg:self-start"
       >
         ‹
       </button>

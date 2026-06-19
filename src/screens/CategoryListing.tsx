@@ -17,7 +17,7 @@ function CategoryListing() {
   return (
     <MainLayout>
       <div className="flex items-center gap-3 px-4 pt-6 lg:mx-auto lg:w-full lg:max-w-7xl lg:px-10 lg:pt-8">
-        <button type="button" onClick={() => navigate(-1)} className="text-2xl dark:text-white">
+        <button type="button" onClick={() => navigate(-1)} className="text-2xl dark:text-white lg:hidden">
           ‹
         </button>
         <h1 className="flex-1 text-center text-lg font-bold text-gray-900 dark:text-white lg:text-left lg:text-2xl">
