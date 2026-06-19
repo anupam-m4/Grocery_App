@@ -9,7 +9,7 @@ function Onboarding() {
       <img
         src={deliveryManPhoto}
         alt="Delivery person"
-        className="hidden w-full flex-1 object-cover lg:block lg:h-screen lg:flex-none"
+        className="w-full flex-1 object-cover lg:h-screen lg:flex-none"
       />
       <div className="flex flex-col justify-center gap-4 px-6 py-8 text-center text-white lg:h-screen lg:items-start lg:justify-center lg:px-16 lg:text-left">
         <span className="text-3xl lg:block" aria-hidden="true">
