@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import locationPin from '../assets/figma/location-pin.png'
+import AuthShell from '../components/AuthShell'
 
 function Location() {
   const navigate = useNavigate()
 
   return (
-    <div className="flex h-screen flex-col bg-linear-to-b from-rose-50 to-white px-6 pt-12 dark:from-gray-900 dark:to-gray-900">
+    <AuthShell>
+    <div className="flex h-screen flex-col bg-linear-to-b from-rose-50 to-white px-6 pt-12 dark:from-gray-900 dark:to-gray-900 lg:h-full">
       <button
         type="button"
         onClick={() => navigate(-1)}
@@ -52,6 +54,7 @@ function Location() {
         Submit
       </button>
     </div>
+    </AuthShell>
   )
 }
 

@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import successIllustration from '../assets/figma/order-success-illustration.png'
+import AuthShell from '../components/AuthShell'
 
 function OrderSuccess() {
   const navigate = useNavigate()
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-6 bg-white px-6 text-center dark:bg-gray-900">
+    <AuthShell>
+    <div className="flex h-screen flex-col items-center justify-center gap-6 bg-white px-6 text-center dark:bg-gray-900 lg:h-full">
       <img src={successIllustration} alt="Order accepted" className="w-40" />
 
       <div>
@@ -28,6 +30,7 @@ function OrderSuccess() {
         Back to home
       </button>
     </div>
+    </AuthShell>
   )
 }
 

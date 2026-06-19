@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import productsData from '../data/products.json'
 import type { Product } from '../types/product'
 import ProductCard from '../components/ProductCard'
-import BottomNav from '../components/BottomNav'
+import MainLayout from '../components/MainLayout'
 import { debounce } from '../utils/debounce'
 import { useFilterStore } from '../store/filterStore'
 import filterIcon from '../assets/figma/Group 6839.png'
@@ -37,8 +37,8 @@ function Search() {
     : []
 
   return (
-    <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
-      <div className="flex items-center gap-3 px-4 pt-6">
+    <MainLayout>
+      <div className="flex items-center gap-3 px-4 pt-6 lg:mx-auto lg:w-full lg:max-w-5xl">
         <button type="button" onClick={() => navigate(-1)} className="text-2xl dark:text-white">
           ‹
         </button>
@@ -59,21 +59,19 @@ function Search() {
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4 pb-4 pt-4">
+      <div className="flex-1 overflow-y-auto px-4 pb-4 pt-4 lg:mx-auto lg:w-full lg:max-w-5xl">
         {debouncedQuery && results.length === 0 && (
           <p className="mt-10 text-center text-gray-400">
             No products found for &quot;{debouncedQuery}&quot;
           </p>
         )}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {results.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>
-
-      <BottomNav />
-    </div>
+    </MainLayout>
   )
 }
 

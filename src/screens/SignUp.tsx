@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import carrotIcon from '../assets/figma/carrot-icon.png'
 import { auth } from '../lib/firebase'
 import { useAuthStore } from '../store/authStore'
+import AuthShell from '../components/AuthShell'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -48,7 +49,8 @@ function SignUp() {
   }
 
   return (
-    <div className="flex h-screen flex-col bg-linear-to-b from-rose-50 to-white px-6 pt-16 dark:from-gray-900 dark:to-gray-900">
+    <AuthShell>
+    <div className="flex h-screen flex-col bg-linear-to-b from-rose-50 to-white px-6 pt-16 dark:from-gray-900 dark:to-gray-900 lg:h-full">
       <img src={carrotIcon} alt="" className="mx-auto mb-8 h-16 w-16" />
 
       <h1 className="mb-1 text-2xl font-bold text-gray-900 dark:text-white">
@@ -130,6 +132,7 @@ function SignUp() {
         </button>
       </p>
     </div>
+    </AuthShell>
   )
 }
 

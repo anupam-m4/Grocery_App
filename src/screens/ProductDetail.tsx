@@ -5,6 +5,7 @@ import type { Product } from '../types/product'
 import { getProductImage, getCategoryPlaceholderEmoji } from '../utils/productImages'
 import { useCartStore } from '../store/cartStore'
 import FavouriteButton from '../components/FavouriteButton'
+import AuthShell from '../components/AuthShell'
 
 const products = productsData as Product[]
 
@@ -18,12 +19,14 @@ function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="flex h-screen flex-col items-center justify-center gap-4 dark:bg-gray-900 dark:text-white">
-        <p>Product not found</p>
-        <button type="button" onClick={() => navigate('/home')} className="text-emerald-600">
-          Back to home
-        </button>
-      </div>
+      <AuthShell>
+        <div className="flex h-screen flex-col items-center justify-center gap-4 dark:bg-gray-900 dark:text-white lg:h-full">
+          <p>Product not found</p>
+          <button type="button" onClick={() => navigate('/home')} className="text-emerald-600">
+            Back to home
+          </button>
+        </div>
+      </AuthShell>
     )
   }
 
@@ -37,7 +40,8 @@ function ProductDetail() {
   }
 
   return (
-    <div className="flex h-screen flex-col bg-gray-50 dark:bg-gray-900">
+    <AuthShell>
+    <div className="relative flex h-screen flex-col bg-gray-50 dark:bg-gray-900 lg:h-full">
       <div className="relative flex h-72 flex-col rounded-b-3xl bg-gray-100 dark:bg-gray-800">
         <button
           type="button"
@@ -158,6 +162,7 @@ function ProductDetail() {
         </button>
       </div>
     </div>
+    </AuthShell>
   )
 }
 

@@ -4,6 +4,7 @@ import type { Product } from '../types/product'
 import { ProductCategory } from '../types/product'
 import { CATEGORY_LABELS } from '../data/categories'
 import { useFilterStore } from '../store/filterStore'
+import AuthShell from '../components/AuthShell'
 
 const products = productsData as Product[]
 const CATEGORIES = Object.values(ProductCategory)
@@ -17,7 +18,8 @@ function Filters() {
   const toggleBrand = useFilterStore((state) => state.toggleBrand)
 
   return (
-    <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
+    <AuthShell>
+    <div className="flex h-screen flex-col bg-white dark:bg-gray-900 lg:h-full">
       <div className="flex items-center justify-between px-4 pt-6">
         <button type="button" onClick={() => navigate(-1)} className="text-2xl dark:text-white">
           ✕
@@ -88,6 +90,7 @@ function Filters() {
         </button>
       </div>
     </div>
+    </AuthShell>
   )
 }
 

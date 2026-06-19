@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import failedIllustration from '../assets/figma/order-failed-illustration.png'
+import AuthShell from '../components/AuthShell'
 
 function OrderFailed() {
   const navigate = useNavigate()
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-6 bg-white px-6 text-center dark:bg-gray-900">
+    <AuthShell>
+    <div className="flex h-screen flex-col items-center justify-center gap-6 bg-white px-6 text-center dark:bg-gray-900 lg:h-full">
       <img src={failedIllustration} alt="Order failed" className="w-40" />
 
       <div>
@@ -26,6 +28,7 @@ function OrderFailed() {
         Back to home
       </button>
     </div>
+    </AuthShell>
   )
 }
 
