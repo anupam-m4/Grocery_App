@@ -9,7 +9,7 @@ function Onboarding() {
       <img
         src={deliveryManPhoto}
         alt="Delivery person"
-        className="flex-1 object-cover"
+        className="w-full flex-1 object-cover"
       />
       <div className="flex flex-col gap-4 px-6 pb-10 pt-8 text-center text-white">
         <h1 className="text-3xl font-bold">

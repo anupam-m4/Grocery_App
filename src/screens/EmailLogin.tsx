@@ -1,13 +1,43 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Eye, EyeOff } from 'lucide-react'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import carrotIcon from '../assets/figma/carrot-icon.png'
+import { auth } from '../lib/firebase'
+import { useAuthStore } from '../store/authStore'
 
 function EmailLogin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const navigate = useNavigate()
+  const setUser = useAuthStore((state) => state.setUser)
+
+  async function handleLogIn() {
+    if (!email || !password) {
+      setError('Please enter your email and password.')
+      return
+    }
+    setError('')
+    setIsSubmitting(true)
+
+    try {
+      const credential = await signInWithEmailAndPassword(auth, email, password)
+      setUser(credential.user)
+      navigate('/location')
+    } catch (err) {
+      const code = err instanceof Error && 'code' in err ? String((err as { code: string }).code) : ''
+      if (code === 'auth/invalid-credential' || code === 'auth/wrong-password' || code === 'auth/user-not-found') {
+        setError('Incorrect email or password.')
+      } else {
+        setError('Could not log in. Please try again.')
+      }
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="flex h-screen flex-col bg-linear-to-b from-rose-50 to-white px-6 pt-16 dark:from-gray-900 dark:to-gray-900">
@@ -54,10 +84,13 @@ function EmailLogin() {
         Forgot Password?
       </button>
 
+      {error && <p className="mb-4 text-sm text-red-500">{error}</p>}
+
       <button
         type="button"
-        onClick={() => navigate('/location')}
-        className="mb-6 rounded-full bg-emerald-500 py-4 font-semibold text-white"
+        onClick={handleLogIn}
+        disabled={isSubmitting}
+        className="mb-6 rounded-full bg-emerald-500 py-4 font-semibold text-white disabled:opacity-50"
       >
         Log In
       </button>

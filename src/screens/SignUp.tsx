@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Eye, EyeOff, Check } from 'lucide-react'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import carrotIcon from '../assets/figma/carrot-icon.png'
+import { auth } from '../lib/firebase'
+import { useAuthStore } from '../store/authStore'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -10,9 +13,39 @@ function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const navigate = useNavigate()
+  const setUser = useAuthStore((state) => state.setUser)
 
   const isEmailValid = EMAIL_REGEX.test(email)
+
+  async function handleSignUp() {
+    if (!username || !isEmailValid || !password) {
+      setError('Please fill in all fields with a valid email.')
+      return
+    }
+    setError('')
+    setIsSubmitting(true)
+
+    try {
+      const credential = await createUserWithEmailAndPassword(auth, email, password)
+      await updateProfile(credential.user, { displayName: username })
+      setUser(credential.user)
+      navigate('/location')
+    } catch (err) {
+      const code = err instanceof Error && 'code' in err ? String((err as { code: string }).code) : ''
+      if (code === 'auth/email-already-in-use') {
+        setError('An account with this email already exists.')
+      } else if (code === 'auth/weak-password') {
+        setError('Password should be at least 6 characters.')
+      } else {
+        setError('Could not create your account. Please try again.')
+      }
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="flex h-screen flex-col bg-linear-to-b from-rose-50 to-white px-6 pt-16 dark:from-gray-900 dark:to-gray-900">
@@ -75,10 +108,13 @@ function SignUp() {
         <span className="text-emerald-600">Privacy Policy.</span>
       </p>
 
+      {error && <p className="mb-4 text-sm text-red-500">{error}</p>}
+
       <button
         type="button"
-        onClick={() => navigate('/location')}
-        className="mb-6 rounded-full bg-emerald-500 py-4 font-semibold text-white"
+        onClick={handleSignUp}
+        disabled={isSubmitting}
+        className="mb-6 rounded-full bg-emerald-500 py-4 font-semibold text-white disabled:opacity-50"
       >
         Sign Up
       </button>
