@@ -24,18 +24,6 @@
     "isFavourite": false
   },
   {
-    "id": "bell-pepper-red",
-    "name": "Bell Pepper Red",
-    "description": "Crisp and sweet red bell peppers, great raw in salads or roasted as a side dish.",
-    "category": "fresh-fruits-vegetable",
-    "brand": "Individual Collection",
-    "unit": "1kg, Priceg",
-    "price": 4.99,
-    "imageUrl": "",
-    "rating": 4,
-    "isFavourite": false
-  },
-  {
     "id": "ginger",
     "name": "Ginger",
     "description": "Fresh ginger root, adds warmth and spice to both sweet and savory dishes.",
