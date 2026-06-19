@@ -1,36 +1,33 @@
 import { useNavigate } from 'react-router-dom'
 import successIllustration from '../assets/figma/order-success-illustration.png'
-import AuthShell from '../components/AuthShell'
 
 function OrderSuccess() {
   const navigate = useNavigate()
 
   return (
-    <AuthShell>
-    <div className="flex h-screen flex-col items-center justify-center gap-6 bg-white px-6 text-center dark:bg-gray-900 lg:h-full">
-      <img src={successIllustration} alt="Order accepted" className="w-40" />
+    <div className="flex h-screen flex-col items-center justify-center gap-6 bg-white px-6 text-center dark:bg-gray-900">
+      <div className="w-full lg:max-w-md">
+        <img src={successIllustration} alt="Order accepted" className="mx-auto w-40 lg:w-52" />
 
-      <div>
-        <h1 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+        <h1 className="mb-2 mt-6 text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
           Your Order has been accepted
         </h1>
-        <p className="text-sm text-gray-500">
+        <p className="mb-6 text-sm text-gray-500">
           Your items has been placed and is on its way to being processed
         </p>
-      </div>
 
-      <button
-        type="button"
-        onClick={() => navigate('/home')}
-        className="w-full rounded-full bg-emerald-500 py-4 font-semibold text-white"
-      >
-        Track Order
-      </button>
-      <button type="button" onClick={() => navigate('/home')} className="text-gray-900 dark:text-white">
-        Back to home
-      </button>
+        <button
+          type="button"
+          onClick={() => navigate('/home')}
+          className="mb-4 w-full rounded-full bg-emerald-500 py-4 font-semibold text-white"
+        >
+          Track Order
+        </button>
+        <button type="button" onClick={() => navigate('/home')} className="text-gray-900 dark:text-white">
+          Back to home
+        </button>
+      </div>
     </div>
-    </AuthShell>
   )
 }
 

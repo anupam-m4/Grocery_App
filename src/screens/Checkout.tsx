@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCartStore } from '../store/cartStore'
-import AuthShell from '../components/AuthShell'
 
 function Checkout() {
   const navigate = useNavigate()
@@ -22,9 +21,8 @@ function Checkout() {
   }
 
   return (
-    <AuthShell>
-    <div className="flex h-screen flex-col justify-end bg-black/40 lg:h-full">
-      <div className="rounded-t-2xl bg-white p-6 dark:bg-gray-900">
+    <div className="flex h-screen flex-col justify-end bg-black/40 lg:items-center lg:justify-center">
+      <div className="rounded-t-2xl bg-white p-6 dark:bg-gray-900 lg:w-full lg:max-w-md lg:rounded-2xl lg:shadow-2xl">
         <div className="mb-6 flex items-center justify-between">
           <h1 className="text-lg font-bold text-gray-900 dark:text-white">
             Checkout
@@ -88,7 +86,6 @@ function Checkout() {
         </button>
       </div>
     </div>
-    </AuthShell>
   )
 }
 

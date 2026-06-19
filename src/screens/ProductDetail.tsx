@@ -5,7 +5,6 @@ import type { Product } from '../types/product'
 import { getProductImage, getCategoryPlaceholderEmoji } from '../utils/productImages'
 import { useCartStore } from '../store/cartStore'
 import FavouriteButton from '../components/FavouriteButton'
-import AuthShell from '../components/AuthShell'
 
 const products = productsData as Product[]
 
@@ -19,14 +18,12 @@ function ProductDetail() {
 
   if (!product) {
     return (
-      <AuthShell>
-        <div className="flex h-screen flex-col items-center justify-center gap-4 dark:bg-gray-900 dark:text-white lg:h-full">
-          <p>Product not found</p>
-          <button type="button" onClick={() => navigate('/home')} className="text-emerald-600">
-            Back to home
-          </button>
-        </div>
-      </AuthShell>
+      <div className="flex h-screen flex-col items-center justify-center gap-4 dark:bg-gray-900 dark:text-white">
+        <p>Product not found</p>
+        <button type="button" onClick={() => navigate('/home')} className="text-emerald-600">
+          Back to home
+        </button>
+      </div>
     )
   }
 
@@ -40,23 +37,22 @@ function ProductDetail() {
   }
 
   return (
-    <AuthShell>
-    <div className="relative flex h-screen flex-col bg-gray-50 dark:bg-gray-900 lg:h-full">
-      <div className="relative flex h-72 flex-col rounded-b-3xl bg-gray-100 dark:bg-gray-800">
+    <div className="relative flex h-screen flex-col bg-gray-50 dark:bg-gray-900 lg:grid lg:grid-cols-2 lg:gap-12 lg:px-16 lg:py-10">
+      <div className="relative flex h-72 flex-col rounded-b-3xl bg-gray-100 dark:bg-gray-800 lg:h-full lg:rounded-3xl">
         <button
           type="button"
           onClick={() => navigate(-1)}
-          className="absolute left-4 top-6 text-2xl dark:text-white"
+          className="absolute left-4 top-6 text-2xl dark:text-white lg:left-6 lg:top-6"
         >
           ‹
         </button>
 
         <div className="flex flex-1 items-center justify-center">
           {image ? (
-            <img src={image} alt={product.name} className="h-40 object-contain" />
+            <img src={image} alt={product.name} className="h-40 object-contain lg:h-72" />
           ) : (
             <span
-              className="text-7xl"
+              className="text-7xl lg:text-9xl"
               role="img"
               aria-label={`${product.name} (photo not available yet)`}
             >
@@ -72,13 +68,13 @@ function ProductDetail() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto rounded-t-3xl bg-white px-6 pt-6 pb-28 dark:bg-gray-900">
+      <div className="flex-1 overflow-y-auto rounded-t-3xl bg-white px-6 pt-6 pb-28 dark:bg-gray-900 lg:rounded-3xl lg:pb-10">
         <div className="mb-4 flex items-start justify-between">
           <div>
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-xl font-bold text-gray-900 dark:text-white lg:text-3xl">
               {product.name}
             </h1>
-            <p className="text-sm text-gray-400">{product.unit}</p>
+            <p className="text-sm text-gray-400 lg:mt-1 lg:text-base">{product.unit}</p>
           </div>
           <FavouriteButton product={product} size={28} />
         </div>
@@ -101,7 +97,7 @@ function ProductDetail() {
           >
             +
           </button>
-          <span className="ml-auto text-lg font-semibold text-gray-900 dark:text-white">
+          <span className="ml-auto text-lg font-semibold text-gray-900 dark:text-white lg:text-2xl">
             ${product.price.toFixed(2)}
           </span>
         </div>
@@ -150,9 +146,17 @@ function ProductDetail() {
             <span className="ml-1 text-gray-400">›</span>
           </span>
         </button>
+
+        <button
+          type="button"
+          onClick={handleAddToBasket}
+          className="mt-6 hidden w-full rounded-full bg-emerald-500 py-4 font-semibold text-white lg:block"
+        >
+          Add To Basket
+        </button>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 bg-white p-4 dark:bg-gray-900">
+      <div className="absolute bottom-0 left-0 right-0 bg-white p-4 dark:bg-gray-900 lg:hidden">
         <button
           type="button"
           onClick={handleAddToBasket}
@@ -162,7 +166,6 @@ function ProductDetail() {
         </button>
       </div>
     </div>
-    </AuthShell>
   )
 }
 

@@ -17,66 +17,71 @@ function Home() {
   const navigate = useNavigate()
 
   const sections: ProductSection[] = [
-    { title: 'Exclusive Offer', items: products.slice(0, 2) },
-    { title: 'Best Selling', items: products.slice(2, 4) },
-    { title: 'Groceries', items: products.slice(4, 6) },
+    { title: 'Exclusive Offer', items: products.slice(0, 4) },
+    { title: 'Best Selling', items: products.slice(1, 5) },
+    { title: 'Groceries', items: products.slice(2, 6) },
   ]
 
   return (
     <MainLayout>
-      <header className="px-4 pt-6 lg:mx-auto lg:w-full lg:max-w-5xl">
-        <div className="mb-4 flex items-center justify-between">
-          <span className="w-9" aria-hidden="true" />
-          <div className="flex flex-col items-center">
+      <header className="border-b border-gray-100 px-4 py-4 dark:border-gray-800 lg:px-10">
+        <div className="mx-auto flex w-full max-w-7xl items-center gap-4">
+          <div className="flex items-center gap-2">
             <span className="text-2xl" aria-hidden="true">
               🥕
             </span>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="hidden text-sm text-gray-500 dark:text-gray-400 lg:block">
               📍 Dhaka, Banassre
             </p>
           </div>
+
+          <button
+            type="button"
+            onClick={() => navigate('/search')}
+            className="flex-1 rounded-lg bg-gray-100 px-4 py-2.5 text-left text-sm text-gray-400 dark:bg-gray-800 lg:max-w-xl"
+          >
+            Search Store
+          </button>
+
           <ThemeToggle />
         </div>
-
-        <button
-          type="button"
-          onClick={() => navigate('/search')}
-          className="mb-4 w-full rounded-lg bg-gray-100 px-4 py-3 text-left text-sm text-gray-400 dark:bg-gray-800"
-        >
-          Search Store
-        </button>
+        <p className="mt-2 text-center text-sm text-gray-500 dark:text-gray-400 lg:hidden">
+          📍 Dhaka, Banassre
+        </p>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 pb-4 lg:mx-auto lg:w-full lg:max-w-5xl">
-        <img
-          src={bannerImage}
-          alt="Fresh Vegetables - up to 40% off"
-          className="mb-6 w-full rounded-xl"
-        />
+      <main className="flex-1 overflow-y-auto px-4 py-6 lg:px-10">
+        <div className="mx-auto w-full max-w-7xl">
+          <img
+            src={bannerImage}
+            alt="Fresh Vegetables - up to 40% off"
+            className="mb-8 w-full rounded-xl lg:h-64 lg:object-cover"
+          />
 
-        {sections.map((section) => (
-          <section key={section.title} className="mb-6">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-white">
-                {section.title}
-              </h2>
-              <button
-                type="button"
-                onClick={() => navigate(`/category/${section.items[0].category}`)}
-                className="text-sm text-emerald-600"
-              >
-                See all
-              </button>
-            </div>
-            <div className="flex gap-3 overflow-x-auto pb-2 lg:flex-wrap lg:overflow-visible">
-              {section.items.map((product) => (
-                <div key={product.id} className="w-40 shrink-0 lg:w-52">
-                  <ProductCard product={product} />
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
+          {sections.map((section) => (
+            <section key={section.title} className="mb-10">
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="text-lg font-bold text-gray-900 dark:text-white lg:text-xl">
+                  {section.title}
+                </h2>
+                <button
+                  type="button"
+                  onClick={() => navigate(`/category/${section.items[0].category}`)}
+                  className="text-sm font-medium text-emerald-600"
+                >
+                  See all
+                </button>
+              </div>
+              <div className="flex gap-3 overflow-x-auto pb-2 lg:grid lg:grid-cols-4 lg:gap-5 lg:overflow-visible">
+                {section.items.map((product) => (
+                  <div key={product.id} className="w-40 shrink-0 lg:w-auto">
+                    <ProductCard product={product} />
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
       </main>
     </MainLayout>
   )
