@@ -29,22 +29,28 @@ function Location() {
       <label className="mb-1 text-sm text-gray-500" htmlFor="zone">
         Your Zone
       </label>
-      <select
-        id="zone"
-        className="mb-6 border-b border-gray-300 bg-transparent pb-2 outline-none dark:text-white"
-      >
-        <option>Banasree</option>
-      </select>
+      <div className="relative mb-6">
+        <select
+          id="zone"
+          className="w-full appearance-none border-b border-gray-300 bg-transparent pb-2 pr-6 outline-none dark:text-white"
+        >
+          <option>Banasree</option>
+        </select>
+        <span className="pointer-events-none absolute right-0 top-0 text-gray-400">⌄</span>
+      </div>
 
       <label className="mb-1 text-sm text-gray-500" htmlFor="area">
         Your Area
       </label>
-      <select
-        id="area"
-        className="mb-10 border-b border-gray-300 bg-transparent pb-2 text-gray-400 outline-none dark:text-white"
-      >
-        <option>Types of your area</option>
-      </select>
+      <div className="relative mb-10">
+        <select
+          id="area"
+          className="w-full appearance-none border-b border-gray-300 bg-transparent pb-2 pr-6 text-gray-400 outline-none dark:text-white"
+        >
+          <option>Types of your area</option>
+        </select>
+        <span className="pointer-events-none absolute right-0 top-0 text-gray-400">⌄</span>
+      </div>
 
       <button
         type="button"

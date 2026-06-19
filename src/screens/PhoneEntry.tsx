@@ -9,10 +9,15 @@ import { COUNTRIES } from '../data/countries'
 import CountryCodeSelect from '../components/CountryCodeSelect'
 import AuthShell from '../components/AuthShell'
 
+const MAX_PHONE_DIGITS = 10
+
 function sanitizeNumber(value: string, dialCode: string): string {
   const digitsOnly = value.replace(/\D/g, '')
   const dialDigits = dialCode.replace(/\D/g, '')
-  return digitsOnly.startsWith(dialDigits) ? digitsOnly.slice(dialDigits.length) : digitsOnly
+  const withoutDialCode = digitsOnly.startsWith(dialDigits)
+    ? digitsOnly.slice(dialDigits.length)
+    : digitsOnly
+  return withoutDialCode.slice(0, MAX_PHONE_DIGITS)
 }
 
 function PhoneEntry() {
@@ -67,6 +72,7 @@ function PhoneEntry() {
             type="tel"
             value={number}
             onChange={(e) => setNumber(sanitizeNumber(e.target.value, dialCode))}
+            maxLength={MAX_PHONE_DIGITS}
             className="flex-1 bg-transparent outline-none"
           />
         </div>
@@ -88,7 +94,7 @@ function PhoneEntry() {
 
         <div className="lg:hidden">
           <NumericKeypad
-            onKeyPress={(key) => setNumber((prev) => applyKeypadInput(prev, key))}
+            onKeyPress={(key) => setNumber((prev) => applyKeypadInput(prev, key, MAX_PHONE_DIGITS))}
           />
         </div>
       </div>

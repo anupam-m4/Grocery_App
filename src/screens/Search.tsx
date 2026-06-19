@@ -24,11 +24,14 @@ function Search() {
     debouncedSetQuery(value)
   }
 
-  const results = debouncedQuery
+  const hasActiveFilters = categories.length > 0 || brands.length > 0
+  const hasSearchCriteria = debouncedQuery.length > 0 || hasActiveFilters
+
+  const results = hasSearchCriteria
     ? products.filter((product) => {
-        const matchesQuery = product.name
-          .toLowerCase()
-          .includes(debouncedQuery.toLowerCase())
+        const matchesQuery = debouncedQuery
+          ? product.name.toLowerCase().includes(debouncedQuery.toLowerCase())
+          : true
         const matchesCategory =
           categories.length === 0 || categories.includes(product.category)
         const matchesBrand = brands.length === 0 || brands.includes(product.brand)
@@ -60,9 +63,11 @@ function Search() {
       </div>
 
       <div className="flex-1 overflow-y-auto px-4 pb-4 pt-4 lg:mx-auto lg:w-full lg:max-w-5xl">
-        {debouncedQuery && results.length === 0 && (
+        {hasSearchCriteria && results.length === 0 && (
           <p className="mt-10 text-center text-gray-400">
-            No products found for &quot;{debouncedQuery}&quot;
+            {debouncedQuery
+              ? `No products found for "${debouncedQuery}"`
+              : 'No products match the selected filters'}
           </p>
         )}
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">

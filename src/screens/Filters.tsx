@@ -16,6 +16,22 @@ function Filters() {
   const toggleCategory = useFilterStore((state) => state.toggleCategory)
   const toggleBrand = useFilterStore((state) => state.toggleBrand)
 
+  function countForCategory(category: ProductCategory) {
+    return products.filter(
+      (product) =>
+        product.category === category &&
+        (brands.length === 0 || brands.includes(product.brand)),
+    ).length
+  }
+
+  function countForBrand(brand: string) {
+    return products.filter(
+      (product) =>
+        product.brand === brand &&
+        (categories.length === 0 || categories.includes(product.category)),
+    ).length
+  }
+
   return (
     <div className="flex h-screen flex-col bg-white dark:bg-gray-900">
       <div className="flex items-center justify-between px-4 pt-6 lg:mx-auto lg:w-full lg:max-w-3xl">
@@ -33,25 +49,33 @@ function Filters() {
               Categories
             </h2>
             <div className="mb-8 flex flex-col gap-4">
-              {CATEGORIES.map((category) => (
-                <label key={category} className="flex items-center gap-3">
-                  <input
-                    type="checkbox"
-                    checked={categories.includes(category)}
-                    onChange={() => toggleCategory(category)}
-                    className="h-5 w-5 accent-emerald-500"
-                  />
-                  <span
-                    className={
-                      categories.includes(category)
-                        ? 'text-emerald-600'
-                        : 'text-gray-900 dark:text-white'
-                    }
+              {CATEGORIES.map((category) => {
+                const isChecked = categories.includes(category)
+                const count = countForCategory(category)
+                const isDisabled = !isChecked && count === 0
+                return (
+                  <label
+                    key={category}
+                    className={`flex items-center gap-3 ${isDisabled ? 'opacity-40' : ''}`}
                   >
-                    {CATEGORY_LABELS[category]}
-                  </span>
-                </label>
-              ))}
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => toggleCategory(category)}
+                      disabled={isDisabled}
+                      className="h-5 w-5 accent-emerald-500"
+                    />
+                    <span
+                      className={
+                        isChecked ? 'text-emerald-600' : 'text-gray-900 dark:text-white'
+                      }
+                    >
+                      {CATEGORY_LABELS[category]}
+                    </span>
+                    <span className="text-xs text-gray-400">({count})</span>
+                  </label>
+                )
+              })}
             </div>
           </div>
 
@@ -60,25 +84,31 @@ function Filters() {
               Brand
             </h2>
             <div className="mb-8 flex flex-col gap-4">
-              {BRANDS.map((brand) => (
-                <label key={brand} className="flex items-center gap-3">
-                  <input
-                    type="checkbox"
-                    checked={brands.includes(brand)}
-                    onChange={() => toggleBrand(brand)}
-                    className="h-5 w-5 accent-emerald-500"
-                  />
-                  <span
-                    className={
-                      brands.includes(brand)
-                        ? 'text-emerald-600'
-                        : 'text-gray-900 dark:text-white'
-                    }
+              {BRANDS.map((brand) => {
+                const isChecked = brands.includes(brand)
+                const count = countForBrand(brand)
+                const isDisabled = !isChecked && count === 0
+                return (
+                  <label
+                    key={brand}
+                    className={`flex items-center gap-3 ${isDisabled ? 'opacity-40' : ''}`}
                   >
-                    {brand}
-                  </span>
-                </label>
-              ))}
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => toggleBrand(brand)}
+                      disabled={isDisabled}
+                      className="h-5 w-5 accent-emerald-500"
+                    />
+                    <span
+                      className={isChecked ? 'text-emerald-600' : 'text-gray-900 dark:text-white'}
+                    >
+                      {brand}
+                    </span>
+                    <span className="text-xs text-gray-400">({count})</span>
+                  </label>
+                )
+              })}
             </div>
           </div>
         </div>
